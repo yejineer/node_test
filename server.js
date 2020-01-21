@@ -139,22 +139,22 @@ var querystring = require('querystring');
 
 http.createServer(function (request, response) {
     if (request.method == 'GET') {
-        fs.readFile('./html/login.html', function (error, data) {
+        fs.readFile('./html/login.html', function (error, get_data) {
             response.writeHead(200, {'Content-Type': 'text/html'});
-            response.end(data);
+            response.end(get_data);
         });
     } else if (request.method == 'POST') {
-        request.on('data', function(data) {
+        request.on('data', function(post_data) {
             var text = "";
-            text += data;
+            text += post_data;
             var parsedStr = querystring.parse(text, '&', '=');
             if (parsedStr.id == parsedStr.pwd) {
                 response.writeHead(302, {'Location': 'https://cs.dongduk.ac.kr'});
                 response.end();
             } else {
-                fs.readFile('./html/login_failed.html', function (Error, data) {
+                fs.readFile('./html/login_failed.html', function (Error, file_data) {
                     response.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
-                    response.end(data);
+                    response.end(file_data);
                 });
             }
         });
