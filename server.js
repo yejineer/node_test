@@ -135,7 +135,7 @@
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
-var querystring = require('querystring');
+var querystring = require('querystring'); // query를 쉽게 빼올 수 있는 모듈
 
 http.createServer(function (request, response) {
     if (request.method == 'GET') {
